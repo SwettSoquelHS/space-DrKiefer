@@ -9,7 +9,6 @@ class Oddball extends Normal {
     this.radius = radius;
     this.angle = angle;
   }
-  @Override
     public void Show() {
 
     pushMatrix();
