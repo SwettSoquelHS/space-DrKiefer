@@ -8,7 +8,7 @@ class Jumbo extends Normal {
   }
  
     public void Show() {
-    this.radius+= 0.01;
+   
     pushMatrix();
     float CosAngle =5 * ( ( -31) * cos(radians(angle)) - 3 * cos((-11.6 + 1) * radians(angle))); /* + whatever float*/
 
