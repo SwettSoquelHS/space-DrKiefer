@@ -1,45 +1,48 @@
 //Declare your variables here
-// so try declaring one Particle first, then instantiate it in setup, and use move and show in draw()
+
 int numberOfObjects = 20;
-//int radius = 10;
+
 int savedTime;
-int totalTime = 500;
+int totalTime = 30000;
 float SpinEffect = 0;
-Normal norm = new Normal(0, 0, 255, 70, 10, 10, 0);
+Normal norm = new Normal(0, 0, 255, 70, 5, 10, 0);
 int Max = 0;
-Jumbo jum = new Jumbo(0, 50, 100, 70, 10, 10, 0);
+Jumbo jum = new Jumbo(0, 50, 255, -10, 10, 10, 0);
+Oddball odd = new Oddball(250, 250, 255, 0, 10, 100, 0);
 void setup() {
   background(0);
   size(500, 500);
   savedTime = millis();
-  //your code here
-} //end of setup
+} 
 
 
 void draw() {
+
   Timer();
-  norm.Show();
-  norm.Move();
-  //your code here
-} //end of draw
+  odd.NewMove(mouseX, mouseY);
+} 
 
 
 
 void Timer() {
 
   int passedTime = millis() - savedTime;
+  Normal[] norm2 = new Normal[3];
+  norm2[0] = norm;
+  norm2[1] = jum;
+  norm2[2] = odd;
 
-  // int NewpassedTime = millis() + savedTime;
-  // int ReverseTotal = 5000;
-  // Has five seconds passed?
+
+  for (Normal a : norm2) {
+    if (a != norm2[2]) {
+
+
+      a.Show();
+      a.Move();
+    }
+  }
   if (passedTime > totalTime) {
-    //float NewSpin = random(1, 1.5);
-    jum.Show();
-    println("Hello There");
-    // SpinEffect = SpinEffect + 1;
-
-
-
-    savedTime = millis();
+    norm2[2].Show();
+    norm2[2].Move();
   }
 }
